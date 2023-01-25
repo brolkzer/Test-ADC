@@ -1,3 +1,13 @@
+Initialiser l'app :
+
+- CREATE DATABASE chat;
+
+- Créer les tables en utilisant les tables dans le dossier [sqlTables]
+
+- Lancer le serveur avec la commande : php -S localhost:8000 (ou autre port) à partir du repo.
+
+---
+
 TO DO :
 
 - MODIFIER SON POST
@@ -12,4 +22,4 @@ TO DO :
 
 - AJOUT DE WEBSOCKET OU REFRESH AJAX JS
 
--
+- POUVOIR BANNIR UN USER SI MOD (HIDE SES POSTS, DISABLE LE DROIT DE POST)

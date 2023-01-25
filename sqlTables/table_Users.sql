@@ -9,5 +9,5 @@ CREATE TABLE `users` (
 )
 COLLATE='utf8mb3_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=17
+AUTO_INCREMENT=1
 ;

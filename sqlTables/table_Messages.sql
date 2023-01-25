@@ -8,5 +8,5 @@ CREATE TABLE `messages` (
 )
 COLLATE='utf8mb3_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=175
+AUTO_INCREMENT=1
 ;
