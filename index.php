@@ -2,17 +2,6 @@
 session_start();
 // Connect to Database
 $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
-
-if (isset($_POST['send'])) {
-  if (!empty($_POST['message']) and (array_key_exists('pseudo', $_SESSION))) {
-    $pseudo = htmlspecialchars($_SESSION['pseudo']);
-    $message = nl2br(htmlspecialchars($_POST['message']));
-
-    $postMessage = $db->prepare('INSERT INTO messages (author, msg) VALUES (?, ?)');
-    $postMessage->execute(array($pseudo, $message));
-
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +12,6 @@ if (isset($_POST['send'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat</title>
   <link rel="stylesheet" href="./styles/index.css" />
-  <script src="app.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -52,14 +40,41 @@ if (isset($_POST['send'])) {
   </header>
   <div id="chat-container">
     <div id="chat-messages">
+
       <ul id="messages-list">
         <script>
-          $('#messages-list').load("./Messages/loadMessages.php")
+          $('#messages-list').load("./Messages/loadMessages.php");
         </script>
       </ul>
     </div>
-    <form id="chat-form" method="POST" action="">
+    <script>
+      $(document).ready(function () {
+        const author = document.querySelector('.header_right_greetings').innerText.split(" ")[1];
+        $('#chat-form').on('submit', function (e) {
+          e.preventDefault();
+          const msg = $("#chat-input").val();
 
+          if ($('.header_right_greetings') && $("#chat-input").val()) {
+            $.ajax({
+              type: "POST",
+              url: "./Messages/postMessage.php",
+              data: { author: author, msg: msg },
+              success: function (response) {
+                // Handle successful message send and clear the form
+                console.log("Success" + response);
+                $("#chat-form")[0].reset();
+
+              },
+              error: function (xhr, status, error) {
+                // Handle error
+                console.log(status + " : " + error);
+              },
+            });
+          }
+        });
+      });
+    </script>
+    <form id="chat-form" method="POST" action="">
       <input type="text" id="chat-input" placeholder="Enter your message..." name="message" />
       <button type="submit" name="send">Send</button>
     </form>

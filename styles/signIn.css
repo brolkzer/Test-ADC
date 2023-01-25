@@ -68,3 +68,43 @@ input[type="submit"] {
 input[type="submit"]:hover {
   border: 2px solid forestgreen;
 }
+
+@media screen and (max-width: 500px) {
+  h2 {
+    max-width: 70%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  h2 {
+    max-width: 70%;
+    text-align: center;
+  }
+
+  input {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  h2 {
+    max-width: 70%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  input {
+    max-width: 80%;
+  }
+
+  form {
+    position: unset;
+    top: 40vh;
+    gap: 1rem;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

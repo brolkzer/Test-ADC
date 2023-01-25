@@ -57,6 +57,7 @@ if (isset($_POST['envoi'])) {
 
 <body>
     <h1>S'inscrire </h1>
+    <h2>Vous avez déjà un compte ?<a href="/Users/SignIn.php"> Cliquez ici pour vous connecter !</a></h2>
     <form action="" method="POST">
         <input type="text" name="pseudo" autocomplete="off" placeholder="Pseudonyme">
         <p>
