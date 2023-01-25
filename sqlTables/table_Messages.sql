@@ -1,0 +1,11 @@
+CREATE TABLE `messages` (
+	`id` INT(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+	`message` LONGTEXT NOT NULL COLLATE 'utf8mb3_general_ci',
+	`author` TEXT NOT NULL COLLATE 'utf8mb3_general_ci',
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `UNIQUE` (`author`) USING HASH
+)
+COLLATE='utf8mb3_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=86
+;

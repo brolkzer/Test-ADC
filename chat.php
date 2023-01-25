@@ -1,10 +1,7 @@
 <?php
-include "environment.php";
 
 // Connect to database
-$sql_username = getenv("username");
-$sql_password = getenv("password");
-$db = new PDO('mysql:host=localhost;dbname=chat', $sql_username, $sql_password);
+$db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
 
 // Retrieve message from client
 $message = $_POST["message"];
