@@ -13,6 +13,7 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
   <title>Chat</title>
   <link rel="stylesheet" href="./styles/index.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/d241de481a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

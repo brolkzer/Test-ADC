@@ -27,6 +27,7 @@ if (isset($_POST['envoi'])) {
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['pwd'] = $pwd;
             $_SESSION['id'] = $retrieveUser->fetch()['id'];
+            $_SESSION['mod'] = $retrieveUser->fetch()['mod'];
             header("Location: ../index.php");
         }
     }

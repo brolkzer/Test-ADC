@@ -50,7 +50,6 @@ if (isset($_POST['envoi'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/signUp.css" />
-    <script src="signUp.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>S'inscire</title>
 </head>
@@ -73,6 +72,14 @@ if (isset($_POST['envoi'])) {
         </p>
         <input id="signUpForm" type="submit" name="envoi" value="S'inscrire">
     </form>
+    <script>
+        $(document).ready(function () {
+            $("#signUpForm").submit(function (e) {
+                e.preventDefault();
+            });
+        });
+
+    </script>
 </body>
 
 </html>
