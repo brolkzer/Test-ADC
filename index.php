@@ -45,8 +45,8 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
       <ul id="messages-list">
         <script>
           // setInterval(() => {
-
-          // }, 5000);
+          // $('#messages-list').load("./Messages/loadMessages.php");
+          // }, 2000);
           $('#messages-list').load("./Messages/loadMessages.php");
         </script>
       </ul>

@@ -89,7 +89,7 @@ session_start();
 $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
 
 // Retrieve latest messages from database
-$getMessages = $db->query("SELECT * FROM messages ORDER BY id ASC LIMIT 10");
+$getMessages = $db->query("SELECT * FROM messages ORDER BY id ASC");
 
 // Return latest messages as JSON 
 while ($message = $getMessages->fetch()) {
@@ -118,7 +118,7 @@ while ($message = $getMessages->fetch()) {
                     $findLink = explode(" ", $message['msg']);
                     $regex = "@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?).*$)@";
                     for ($i = 0; $i < count($findLink); $i++) {
-                        $embed = explode("&ab_channel", str_replace("watch?v=", "embed/", $findLink[$i]))[0];
+                        $embed = str_replace("watch?v=", "embed/", $findLink[$i]);
                     }
                     echo preg_replace($regex, ' ', $message["msg"]);
                     echo "<iframe width=\"460\" height=\"315\" src=\"$embed\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
