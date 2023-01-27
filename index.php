@@ -84,8 +84,17 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
       });
     </script>
     <form id="chat-form" method="POST" action="">
-      <input type="text" id="chat-input" placeholder="Enter your message..." name="message" />
-      <button type="submit" name="send">Send</button>
+      <?php
+      // Checks if user is logged
+      // If so, displays the form,
+      // If not, asking for user to log in 
+      if (array_key_exists('pseudo', $_SESSION)) {
+        echo '<input type=\"text\" id=\"chat-input\" placeholder=\"Enter your message...\" name=\"message\" />
+          <button type=\"submit\" name=\"send\">Send</button>';
+      } else {
+        echo '<p>Vous devez être connecter pour envoyer des messages ! </p>';
+      }
+      ?>
     </form>
   </div>
 </body>
