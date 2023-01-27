@@ -11,11 +11,11 @@ $id = htmlspecialchars($_POST['id']);
 $retrieveMessage = $db->prepare('SELECT * FROM messages where id = ?');
 $retrieveMessage->execute(array($id));
 
+// If the message exists & is found, proceed to deletion
 if ($retrieveMessage->rowCount() > 0) {
     $deleteMessage = $db->prepare('UPDATE messages SET messages.show = 0 WHERE messages.id = ?');
     $deleteMessage->execute(array($id));
 } else {
     throw new Exception('Could not find the message you want to delete');
 }
-// }
 ?>

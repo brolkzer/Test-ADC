@@ -1,6 +1,10 @@
 <script src="https://kit.fontawesome.com/d241de481a.js" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
+        // If the user cliks on one of the 3 icons handle the correct reaction
+        // Edit message
+        // Delete message
+        // Ban user
         $('li span i').on('click', function (e) {
             const closestLi = e.currentTarget.closest('li');
             const closestLiMsg = closestLi.lastChild.textContent.trim();
@@ -55,6 +59,7 @@
                 }
             }
             $('#editForm').on('submit', function (e) {
+                // On submit, prevents reload, and handle the AJAX request
                 e.preventDefault();
                 const id = closestLiId;
                 const msg = $("#editText").val();
@@ -114,6 +119,7 @@ while ($message = $getMessages->fetch()) {
                 </span>
                 <br>
                 <?php
+                // Look for a youtube link to display and subr the link from the string
                 if (str_contains($message['msg'], "https://www.youtube.com/watch?v=")) {
                     $findLink = explode(" ", $message['msg']);
                     $regex = "@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?).*$)@";

@@ -27,6 +27,7 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
           echo 'Bonjour' . ' ' . $_SESSION['pseudo'];
         } ?>
       </p>
+      <!-- Handle display depending on if a user is logged in or not -->
       <?php if (array_key_exists('pseudo', $_SESSION)) {
         echo '<button class="header_right_btn" onClick="window.location.href = \'/Users/signOut.php\'">Se déconnecter</button>';
       } else if (!array_key_exists('pseudo', $_SESSION)) {
@@ -44,6 +45,7 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
 
       <ul id="messages-list">
         <script>
+          //setInterval while no sockets are implemented on the app, currently turned off cause working on local
           // setInterval(() => {
           // $('#messages-list').load("./Messages/loadMessages.php");
           // }, 2000);
@@ -53,6 +55,8 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
     </div>
     <script>
       $(document).ready(function () {
+        // Take user's pseudo from header
+        // Prevent reloading the page on form's submition
         const author = document.querySelector('.header_right_greetings').innerText.split(" ")[1];
         $('#chat-form').on('submit', function (e) {
           e.preventDefault();
