@@ -44,6 +44,9 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
 
       <ul id="messages-list">
         <script>
+          // setInterval(() => {
+
+          // }, 5000);
           $('#messages-list').load("./Messages/loadMessages.php");
         </script>
       </ul>
@@ -64,6 +67,7 @@ $db = new PDO('mysql:host=localhost;dbname=chat', "root", "root");
                 // Handle successful message send and clear the form
                 console.log("Success" + response);
                 $("#chat-form")[0].reset();
+                $('#messages-list').load("./Messages/loadMessages.php");
 
               },
               error: function (xhr, status, error) {
