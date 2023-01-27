@@ -114,32 +114,17 @@ while ($message = $getMessages->fetch()) {
                 </span>
                 <br>
                 <?php
-
-                // for ($i = 0; $i < count($findLink); $i++) {
-    
-                //     if (str_contains($findLink[$i], "https://www.youtube.com/watch?v=")) {
-                //         $embed = str_replace("watch?v=", "embed/", $findLink[$i]);
-    
-                //         echo str_replace($findLink[$i], "", $message['msg']);
-                //         echo "<iframe width=\"560\" height=\"315\" src=\"$embed\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
-                //     } else {
-    
-                //         // $i = count($findLink) - 1;
-                //     }
-                // }
                 if (str_contains($message['msg'], "https://www.youtube.com/watch?v=")) {
                     $findLink = explode(" ", $message['msg']);
                     $regex = "@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?).*$)@";
                     for ($i = 0; $i < count($findLink); $i++) {
-                        $embed = str_replace("watch?v=", "embed/", $findLink[$i]);
+                        $embed = explode("&ab_channel", str_replace("watch?v=", "embed/", $findLink[$i]))[0];
                     }
                     echo preg_replace($regex, ' ', $message["msg"]);
                     echo "<iframe width=\"460\" height=\"315\" src=\"$embed\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
                 } else {
                     echo $message['msg'];
                 }
-
-                // echo $message['msg'];
                 ?>
 
             </li>
