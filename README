@@ -1,6 +1,6 @@
 Initialiser l'app :
 
-- CREATE DATABASE chat;
+- Créer la base de données SQL avec la commande 'CREATE DATABASE chat'
 
 - Créer les tables en utilisant les tables dans le dossier [sqlTables]
 
@@ -10,4 +10,4 @@ Initialiser l'app :
 
 TO DO :
 
-- AJOUT DE WEBSOCKET OU REFRESH AJAX JS
+- AJOUT DE WEBSOCKET
